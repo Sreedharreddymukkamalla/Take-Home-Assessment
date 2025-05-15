@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "Take-Home-Assessment",
   "private": true,
   "scripts": {
     "build": "turbo run build",
