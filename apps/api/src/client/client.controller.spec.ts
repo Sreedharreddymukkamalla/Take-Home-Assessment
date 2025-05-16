@@ -13,6 +13,9 @@ describe('ClientController', () => {
     findOne: jest.fn((id: number) =>
       Promise.resolve(seedClients.find(client => client.id === id) || null)
     ),
+    remove: jest.fn((id: number) =>
+      Promise.resolve(seedClients.some(client => client.id === id))
+    ),
   };
 
   beforeEach(async () => {
@@ -77,6 +80,20 @@ describe('ClientController', () => {
     it('should handle service errors gracefully', async () => {
       jest.spyOn(service, 'findOne').mockRejectedValueOnce(new Error('Unexpected error'));
       await expect(controller.findOne(2)).rejects.toThrow(Error);
+    });
+  });
+
+  describe('remove', () => {
+    it('should delete a client and return a message', async () => {
+      mockClientService.remove.mockResolvedValueOnce(true);
+      const result = await controller.remove(1);
+      expect(result).toEqual({ message: 'Client #1 deleted' });
+      expect(service.remove).toHaveBeenCalledWith(1);
+    });
+
+    it('should throw NotFoundException if client does not exist', async () => {
+      mockClientService.remove.mockResolvedValueOnce(false);
+      await expect(controller.remove(999)).rejects.toThrow(NotFoundException);
     });
   });
 });

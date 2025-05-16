@@ -28,4 +28,9 @@ export class ClientService {
   async findOne(id: number): Promise<Client | null> {
     return this.clientRepository.findOneBy({ id });
   }
+
+  async remove(id: number): Promise<boolean> {
+    const result = await this.clientRepository.delete(id);
+    return typeof result.affected === 'number' && result.affected > 0;
+  }
 }

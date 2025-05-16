@@ -5,6 +5,7 @@ import {
   Param,
   ParseIntPipe,
   NotFoundException,
+  Delete,
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { QueryClientDto } from './dto/query-client.dto';
@@ -26,5 +27,14 @@ export class ClientController {
       throw new NotFoundException(`Client #${id} not found`);
     }
     return client;
+  }
+
+  @Delete(':id')
+  async remove(@Param('id', ParseIntPipe) id: number): Promise<{ message: string }> {
+    const deleted = await this.clientService.remove(id);
+    if (!deleted) {
+      throw new NotFoundException(`Client #${id} not found`);
+    }
+    return { message: `Client #${id} deleted` };
   }
 }
