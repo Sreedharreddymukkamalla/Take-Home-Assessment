@@ -1,8 +1,11 @@
 import { Client } from '@/types/client';
 
+// Use environment variable for backend URL
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080';
+
 export async function getClients(params: Record<string, string> = {}): Promise<Client[]> {
   const query = new URLSearchParams(params).toString();
-  let url = 'http://localhost:8080/clients';
+  let url = `${BACKEND_URL}/clients`;
   if (query) {
     url += '?' + query;
   }
