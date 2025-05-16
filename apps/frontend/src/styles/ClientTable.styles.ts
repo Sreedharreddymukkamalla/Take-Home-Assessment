@@ -19,15 +19,19 @@ export const HeaderCell = styled(TableCell)(() => ({
   height: '20px',
   lineHeight: 1,
   letterSpacing: '-0.02em',
-  padding: '15px',
+  verticalAlign: 'bottom',
+  padding: '15px 0px',
   '&:first-of-type': {
     paddingLeft: '40px',
   },
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+    textRendering: 'optimizeLegibility',
 }));
 
 
 export const BodyRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  '&:nth-of-type(even)': {
     backgroundColor: theme.palette.action.hover,
   },
 }));
@@ -40,7 +44,8 @@ export const BodyCell = styled(TableCell)(() => ({
   letterSpacing: '-0.02em',
   color: '#777777',
   height: '50px',
-  padding: '10px',
+  verticalAlign: 'bottom',
+  padding: '10px 0px',
   '&:first-of-type': {
     paddingLeft: '40px',
   },

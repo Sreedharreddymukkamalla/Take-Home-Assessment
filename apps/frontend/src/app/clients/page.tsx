@@ -7,6 +7,7 @@ import ClientTable from '@/components/ClientTable';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
+import { ERROR_LOADING_CLIENTS } from '@/constants/Constants';
 
 export default function ClientsPage() {
   const [params, setParams] = useState<Record<string, string>>({})
@@ -44,7 +45,7 @@ export default function ClientsPage() {
 
       {error && (
         <Alert severity="error" sx={{ mt: 2 }}>
-          Error loading clients: {error.message}
+          {ERROR_LOADING_CLIENTS}: {error}
         </Alert>
       )}
 

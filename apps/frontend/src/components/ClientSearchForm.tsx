@@ -39,7 +39,7 @@ import {
 } from '@/constants/Constants';
 
 export interface SearchFormProps {
-  onSearch: (params: { name?: string; birthday?: string; accountType?: string }) => void;
+  readonly onSearch: (params: { name?: string; birthday?: string; accountType?: string }) => void;
 }
 
 export default function ClientSearchForm({ onSearch }: SearchFormProps) {
@@ -59,8 +59,8 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
   };
 
   return (
-    <Paper elevation={6} sx={searchBoxContainer}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Paper sx={searchBoxContainer}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '18px',marginTop: '35px', marginBottom: '40px' }}>
         <Typography component="h2" sx={headerTitle}>
           {CLIENT_DIRECTORY_TITLE}
         </Typography>
@@ -84,7 +84,10 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               size="small"
               sx={nameField}
               slotProps={{
-                inputLabel: { shrink: true }
+                inputLabel: { shrink: true,
+              sx: {
+                  transform: 'translate(15px, -6px) scale(1)'
+              },}
               }}
             />
 
@@ -101,7 +104,8 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                   placeholder: 'MM / DD / YYYY',size: 'small',
               InputProps: {
                 startAdornment: (
-                  <InputAdornment position="start">
+                  <InputAdornment position="start" sx={{
+    margin: 0,}}>
                     <Typography
                       variant="body2" // Matches input size
                       sx={{ color: 'gray', minWidth: '0px' }}
@@ -109,9 +113,11 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                   </InputAdornment>
                 ),
               },
-                InputLabelProps: {
-                  shrink: true, 
-                }, sx: birthdayField }, }}
+                
+                InputLabelProps: { shrink: true,
+              sx: {
+                  transform: 'translate(15px, -7px) scale(1)'
+              },}, sx: birthdayField }, }}
               />
             </LocalizationProvider>
 
@@ -121,7 +127,11 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
 
 
             <FormControl variant="outlined" size="small" sx={selectField} fullWidth>
-              <InputLabel shrink>Account Type</InputLabel>
+              <InputLabel shrink
+              sx= {{
+                  transform: 'translate(15px, -7px) scale(1)'
+              }}
+              >Account Type</InputLabel>
               <Select
                 value={accountType}
                 onChange={(e: SelectChangeEvent) => {

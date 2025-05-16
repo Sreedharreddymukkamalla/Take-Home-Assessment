@@ -1,14 +1,15 @@
 export const NO_CLIENTS_FOUND = 'No clients found.';
 export const FETCH_CLIENTS_ERROR = 'Failed to fetch clients.';
 export const CLIENT_DIRECTORY_TITLE = 'Client Directory';
+export const ERROR_LOADING_CLIENTS = 'Error loading clients';
 
 export const CLIENTS_TABLE_HEADER = [
-  { label: 'Name',     align: 'left'   },
-  { label: 'Birthday', align: 'center' },
-  { label: 'Type',     align: 'center' },
-  { label: 'Account',  align: 'left'   },
-  { label: 'Balance',  align: 'left'   },
-  { label: 'Actions',  align: 'center' },
+  { label: 'Name',     align: 'left',   width: '282px' },
+  { label: 'Birthday', align: 'center', width: '165px' },
+  { label: 'Type',     align: 'center', width: '153px' },
+  { label: 'Account',  align: 'left',   width: '208px', pl: 3.75 },
+  { label: 'Balance',  align: 'left',   width: '162px', pl: 1.875 },
+  { label: 'Actions',  align: 'center', width: '306px', pr:'40px' },
 ] as const;
 
 export const BUTTON_LABELS = {

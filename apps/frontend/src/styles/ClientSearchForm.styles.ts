@@ -18,7 +18,8 @@ export const searchBoxContainer: SxProps<Theme> = {
   border: '1px solid #E0D6C0', 
   justifyContent: 'space-between',
   marginTop: '75px',
-  marginLeft: '80px',
+  marginLeft: '126px',
+  boxShadow: '0px 5px 15px 0px #00000033',
 };
 
 export const MenuItemStyles: SxProps<Theme> = {
@@ -44,14 +45,13 @@ export const nameField: SxProps<Theme> = {
   width: '505px',
   fontFamily: 'Poppins',
   '& .MuiOutlinedInput-notchedOutline legend': {
-    width:'30px'
+    width:'42px'
   },
   '& .MuiInputLabel-root.MuiInputLabel-shrink': {
     fontFamily: 'Poppins',
     color: '#650000',
     fontSize: '10px',
-    height: '16px',
-    top: '4px',
+    height: '16px'
   },
   '& .MuiInputLabel-root': {
   fontFamily: 'Poppins',
@@ -75,7 +75,7 @@ export const nameField: SxProps<Theme> = {
 export const birthdayField: SxProps<Theme> = {
   width: '181px',
   '& .MuiPickersOutlinedInput-notchedOutline legend': {
-    width:'45px'
+    width:'52px'
   },
 
   '& .MuiInputLabel-root.MuiInputLabel-shrink': {
@@ -83,7 +83,6 @@ export const birthdayField: SxProps<Theme> = {
     color: '#454545',
     fontSize: '10px',
     height: '16px',
-    top: '4px',
   },
 
 
@@ -92,6 +91,7 @@ export const birthdayField: SxProps<Theme> = {
     height: '50px',
     fontFamily: 'Poppins',
     color: '#E0E0E0',
+    padding: '0px 15px',
     boxShadow: '0px 1px 2px rgba(0,0,0,0.05)',
     '& fieldset': {
       borderWidth: '2px',
@@ -113,22 +113,24 @@ export const selectField: SxProps<Theme> = {
   width: '173px',
   fontFamily: 'Poppins',
     '& .MuiOutlinedInput-notchedOutline legend': {
-      width:'60px'
+      width:'80px'
     },
   '& .MuiInputLabel-root.MuiInputLabel-shrink': {
     fontFamily: 'Poppins',
     color: '#454545',
     fontSize: '10px',
     height: '16px',
-    top: '4px',
   },
   '& .MuiInputLabel-root': {
   fontFamily: 'Poppins',
   color: '#454545',
   },
   '& .MuiOutlinedInput-root': {
+    display: 'flex',
+    justifyContent: 'flex-start',
     height: '50px',
     borderRadius: '10px',
+    padding: '11px 0px 6px 0px',
     boxShadow: '0px 1px 2px rgba(0,0,0,0.05)',
     '& fieldset': {
       borderWidth: '2px',
@@ -157,14 +159,16 @@ export const submitButton: SxProps<Theme> = {
 };
 
 export const headerTitle: SxProps<Theme> = {
+  display: 'flex',
+  alignItems: 'center',
   fontFamily: 'Poppins',
   fontWeight: 700,
   fontSize: '20px',
+  height: '30px',
   lineHeight: 1,
   letterSpacing: '-0.02em',
   color: '#650000',
-  pt: '15px',
-  pl: '40px',
+  paddingLeft: '40px'
 };
 
 export const iconContainer: SxProps<Theme> = {
