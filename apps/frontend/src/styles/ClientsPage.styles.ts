@@ -7,7 +7,7 @@ export const alertStyles: SxProps<Theme> = {
   height: '50px',    
   borderRadius: '10px',    
   border: '1px solid #E0D6C0', 
-  marginLeft: '126px',
+  marginLeft: '80px',
 };
 
 export const PageContainer = styled(Box)({

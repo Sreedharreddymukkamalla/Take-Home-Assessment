@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';        
 import Box from '@mui/material/Box';              
@@ -47,18 +47,17 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
   const [birthday, setBirthday] = useState<Dayjs | null>(null);
   const [accountType, setAccountType] = useState('');
 
-  useEffect(() => {
-    const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+  const handleSearch = (params: { name?: string; birthday?: string; accountType?: string }) => {
     const filtered = Object.fromEntries(
-      Object.entries({ name, birthday: birthdayStr, accountType }).filter(([, v]) => v)
+      Object.entries(params).filter(([, v]) => v)
     ) as { name?: string; birthday?: string; accountType?: string };
     onSearch(filtered);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, birthday, accountType]);
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // No-op: search is handled by useEffect
+    const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+    handleSearch({ name, birthday: birthdayStr, accountType });
   };
 
   return (
@@ -74,16 +73,19 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               label="Name"
               value={name}
               onChange={e => {
-                setName(e.target.value);
+                const newName = e.target.value;
+                setName(newName);
+                const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                handleSearch({ name: newName, birthday: birthdayStr, accountType });
               }}
               variant="outlined"
               size="small"
               sx={nameField}
               slotProps={{
                 inputLabel: { shrink: true,
-              sx: {
-                  transform: 'translate(15px, -6px) scale(1)'
-              },}
+                  sx: {
+                    transform: 'translate(15px, -6px) scale(1)'
+                  },}
               }}
             />
 
@@ -126,6 +128,8 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                 value={accountType}
                 onChange={(e: SelectChangeEvent<string>) => {
                   setAccountType(e.target.value);
+                  const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                  handleSearch({ name, birthday: birthdayStr, accountType: e.target.value });
                 }}
                 sx={MenuItemStyles}
               >
