@@ -30,8 +30,9 @@ export default function ClientTable({ data }: ClientTableProps) {
   const [open, setOpen] = useState(false);
 
   const handleDelete = async (id: number) => {
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080';
     try {
-      const res = await fetch(`http://localhost:8080/clients/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${BACKEND_URL}/clients/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete client');
       setClients(prev => prev.filter(c => c.id !== id));
       setAlert({ type: 'success', message: 'Client deleted.' });
