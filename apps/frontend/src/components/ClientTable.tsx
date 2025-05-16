@@ -13,6 +13,7 @@ import {
   BalanceCell,
   ActionStack,
   ActionButton,
+  StyledPaper,
 } from '../styles/ClientTable.styles';
 import Typography from '@mui/material/Typography';
 import { BUTTON_LABELS, NO_CLIENTS_FOUND, CLIENTS_TABLE_HEADER } from '../constants/Constants';
@@ -54,32 +55,18 @@ export default function ClientTable({ data }: ClientTableProps) {
   if (clients.length === 0) return <p>{NO_CLIENTS_FOUND}</p>;
 
   return (
-    <Paper
-      sx={{
-        marginLeft: '125px',
-        marginTop: '50px',
-        width: '1278px',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        border: '1px solid #E0D6C0',
-        boxShadow: '0px 5px 15px 0px #00000033',
-      }}
-    >
+    <StyledPaper>
       <ClientAlert open={open} alert={alert} onClose={handleClose} />
-      <TableContainer >
-        <Table sx={{ tableLayout: 'fixed', width: 'auto' }}>
+      <TableContainer sx={{ borderCollapse: 'collapse' }}>
+        <Table sx={{  borderCollapse: 'collapse',tableLayout: 'fixed', width: 'auto' }}>
           <TableHead>
             <HeaderRow>
               {CLIENTS_TABLE_HEADER.map(({ label, align, width, pl, pr }) => (
                 <HeaderCell
                   key={label}
                   align={align}
-                  sx={{
-                    border: 'none',
-                    width,
-                    ...(pl ? { pl } : {}),
-                    ...(pr ? { pr } : {}),
-                  }}
+                  sx={{width, ...(pl ? { pl } : {}),
+                    ...(pr ? { pr } : {}),}}
                 >
                   {label}
                 </HeaderCell>
@@ -123,6 +110,6 @@ export default function ClientTable({ data }: ClientTableProps) {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </StyledPaper>
   );
 }

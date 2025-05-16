@@ -18,7 +18,7 @@ export const searchBoxContainer: SxProps<Theme> = {
   border: '1px solid #E0D6C0', 
   justifyContent: 'space-between',
   marginTop: '75px',
-  marginLeft: '126px',
+  marginLeft: '80px',
   boxShadow: '0px 5px 15px 0px #00000033',
 };
 
@@ -176,4 +176,25 @@ export const iconContainer: SxProps<Theme> = {
   display: 'flex',
   alignItems: 'center',
   gap: '20px',
+};
+
+export const avatarStyles = {
+  width: 50,
+  height: 50,
+  cursor: 'pointer',
+  border: '1px solid #650000',
+};
+
+export const inputRow = {
+  display: 'flex',
+  gap: '10px',
+  alignItems: 'center',
+};
+
+export const searchBoxInnerContainer = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '18px',
+  marginTop: '35px',
+  marginBottom: '40px',
 };

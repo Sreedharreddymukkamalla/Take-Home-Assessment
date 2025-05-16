@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import { ERROR_LOADING_CLIENTS } from '@/constants/Constants';
+import { alertStyles,PageContainer,loaderStyles,loaderContainerStyles } from '@/styles/ClientsPage.styles';
 
 export default function ClientsPage() {
   const [params, setParams] = useState<Record<string, string>>({})
@@ -34,35 +35,23 @@ export default function ClientsPage() {
   }, [params])
 
   return (
-    <Box
-      sx={{
-        bgcolor: 'common.white',
-        height: '1080px',
-        width: '1440px',
-      }}
-    >
+    <PageContainer>
       <ClientSearchForm onSearch={setParams} />
 
       {error && (
-        <Alert severity="error" sx={{ mt: 2 }}>
+        <Alert severity="error" sx={alertStyles}>
           {ERROR_LOADING_CLIENTS}: {error}
         </Alert>
       )}
 
       {(loading) ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Box sx={loaderContainerStyles}>
           <CircularProgress
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
+            sx={loaderStyles}/>
         </Box>
       ) : (
         <ClientTable data={clients || []} />
       )}
-    </Box>
+    </PageContainer>
   );
 }

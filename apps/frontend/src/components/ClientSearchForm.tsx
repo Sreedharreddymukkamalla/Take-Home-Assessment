@@ -10,16 +10,13 @@ import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
-
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import CustomIcon from './CustomIcon';
-
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
-
 import {
   formContainer,
   nameField,
@@ -30,7 +27,10 @@ import {
   iconContainer,   
   headerTitle,
   checkingMenuItemStyles,    
-  MenuItemStyles                      
+  MenuItemStyles,
+  inputRow,
+  searchBoxInnerContainer,
+  avatarStyles,                     
 } from '@/styles/ClientSearchForm.styles';
 
 import {
@@ -45,7 +45,7 @@ export interface SearchFormProps {
 export default function ClientSearchForm({ onSearch }: SearchFormProps) {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState<Dayjs | null>(null);
-  const [accountType, setAccountType] = useState('Checking');
+  const [accountType, setAccountType] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -60,13 +60,13 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
 
   return (
     <Paper sx={searchBoxContainer}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '18px',marginTop: '35px', marginBottom: '40px' }}>
+      <Box sx={searchBoxInnerContainer}>
         <Typography component="h2" sx={headerTitle}>
           {CLIENT_DIRECTORY_TITLE}
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} sx={formContainer}>
-          <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <Box sx={inputRow}>
             <TextField
               label="Name"
               value={name}
@@ -105,9 +105,8 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               InputProps: {
                 startAdornment: (
                   <InputAdornment position="start" sx={{
-    margin: 0,}}>
+                    margin: 0,}}>
                     <Typography
-                      variant="body2" // Matches input size
                       sx={{ color: 'gray', minWidth: '0px' }}
                     ></Typography>
                   </InputAdornment>
@@ -115,16 +114,11 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               },
                 
                 InputLabelProps: { shrink: true,
-              sx: {
-                  transform: 'translate(15px, -7px) scale(1)'
-              },}, sx: birthdayField }, }}
+                sx: {
+                      transform: 'translate(15px, -7px) scale(1)'
+                },}, sx: birthdayField }, }}
               />
             </LocalizationProvider>
-
-
-
-
-
 
             <FormControl variant="outlined" size="small" sx={selectField} fullWidth>
               <InputLabel shrink
@@ -166,20 +160,13 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
             </IconButton>
           </Box>
 
-
-
           <Box sx={iconContainer}>
             <CustomIcon src="notificationIcon.png" alt="Notification Icon" size={28} />
             <CustomIcon src="settingsIcon.png" alt="Settings Icon" size={28} />
             <Avatar
               src="/images/user-profile.png"
               alt="User Avatar"
-              sx={{
-                width: 50,
-                height: 50,
-                cursor: 'pointer',
-                border: '1px solid #650000',
-              }}
+              sx={avatarStyles}
             />
           </Box>
         </Box>
