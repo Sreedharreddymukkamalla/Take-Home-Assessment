@@ -4,7 +4,6 @@ import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
-import Paper from '@mui/material/Paper';
 import {
   HeaderRow,
   HeaderCell,
@@ -36,7 +35,7 @@ export default function ClientTable({ data }: ClientTableProps) {
       if (!res.ok) throw new Error('Failed to delete client');
       setClients(prev => prev.filter(c => c.id !== id));
       setAlert({ type: 'success', message: 'Client deleted.' });
-    } catch (e) {
+    } catch {
       setAlert({ type: 'error', message: 'Failed to close account.' });
     }
     setOpen(true);
@@ -61,12 +60,14 @@ export default function ClientTable({ data }: ClientTableProps) {
         <Table sx={{  borderCollapse: 'collapse',tableLayout: 'fixed', width: 'auto' }}>
           <TableHead>
             <HeaderRow>
-              {CLIENTS_TABLE_HEADER.map(({ label, align, width, pl, pr }) => (
+              {CLIENTS_TABLE_HEADER.map(({ label, align, width, padding }) => (
                 <HeaderCell
                   key={label}
                   align={align}
-                  sx={{width, ...(pl ? { pl } : {}),
-                    ...(pr ? { pr } : {}),}}
+                  sx={{
+                    width,
+                    ...(padding && { padding }),
+                  }}
                 >
                   {label}
                 </HeaderCell>

@@ -47,14 +47,13 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
   const [birthday, setBirthday] = useState<Dayjs | null>(null);
   const [accountType, setAccountType] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(birthday)
     const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
     onSearch(
       Object.fromEntries(
         Object.entries({ name, birthday: birthdayStr, accountType }).filter(([, v]) => v)
-      ) as any
+      ) as { name?: string; birthday?: string; accountType?: string }
     );
   };
 
@@ -77,7 +76,7 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                 onSearch(
                   Object.fromEntries(
                     Object.entries({ name: newName, birthday: birthdayStr, accountType }).filter(([, v]) => v)
-                  ) as any
+                  ) as { name?: string; birthday?: string; accountType?: string }
                 )
               }}
               variant="outlined"
@@ -128,14 +127,14 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               >Account Type</InputLabel>
               <Select
                 value={accountType}
-                onChange={(e: SelectChangeEvent) => {
+                onChange={(e: SelectChangeEvent<string>) => {
                   setAccountType(e.target.value)
                   const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
                   console.log('birthdayStr', birthdayStr);
                   onSearch(
                     Object.fromEntries(
                       Object.entries({ name, birthday: birthdayStr, accountType: e.target.value }).filter(([, v]) => v)
-                    ) as any
+                    ) as { name?: string; birthday?: string; accountType?: string }
                   );
                 }}
                 sx={MenuItemStyles}
