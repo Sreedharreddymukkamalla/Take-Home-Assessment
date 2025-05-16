@@ -19,7 +19,6 @@ import { BUTTON_LABELS, NO_CLIENTS_FOUND, CLIENTS_TABLE_HEADER } from '../consta
 import { formatBalance } from '../utils/formatBalance';
 import { useState } from 'react';
 import ClientAlert from './ClientAlert';
-import { alertStyles } from '@/styles/ClientsPage.styles';
 
 export interface ClientTableProps {
   readonly data?: Client[];

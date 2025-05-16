@@ -56,7 +56,10 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+    let birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+    if (birthdayStr === 'Invalid Date') {
+      birthdayStr = undefined;
+    }
     handleSearch({ name, birthday: birthdayStr, accountType });
   };
 
@@ -75,7 +78,10 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               onChange={e => {
                 const newName = e.target.value;
                 setName(newName);
-                const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                let birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                if (birthdayStr === 'Invalid Date') {
+                  birthdayStr = undefined;
+                }
                 handleSearch({ name: newName, birthday: birthdayStr, accountType });
               }}
               variant="outlined"
@@ -88,15 +94,18 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                   },}
               }}
             />
-
-
-
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateField
                 label="Birthday"
                 format="MM / DD / YYYY"
                 value={birthday}
-                onChange={newVal => setBirthday(newVal)}
+                onChange={newVal => {
+                  setBirthday(newVal);
+                  let birthdayStr = newVal ? newVal.format('YYYY-MM-DD') : undefined;
+                  if (birthdayStr === 'Invalid Date') {
+                    birthdayStr = undefined;
+                  }
+                }}
                 sx={birthdayField}
                 slotProps={{ textField: { 
                   placeholder: 'MM / DD / YYYY',size: 'small',
@@ -117,7 +126,6 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                 },}, sx: birthdayField }, }}
               />
             </LocalizationProvider>
-
             <FormControl variant="outlined" size="small" sx={selectField} fullWidth>
               <InputLabel shrink
               sx= {{
@@ -128,7 +136,10 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
                 value={accountType}
                 onChange={(e: SelectChangeEvent<string>) => {
                   setAccountType(e.target.value);
-                  const birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                  let birthdayStr = birthday ? birthday.format('YYYY-MM-DD') : undefined;
+                  if (birthdayStr === 'Invalid Date') {
+                    birthdayStr = undefined;
+                  }
                   handleSearch({ name, birthday: birthdayStr, accountType: e.target.value });
                 }}
                 sx={MenuItemStyles}
