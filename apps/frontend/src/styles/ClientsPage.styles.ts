@@ -12,8 +12,9 @@ export const alertStyles: SxProps<Theme> = {
 
 export const PageContainer = styled(Box)({
   backgroundColor: '#fff',
-  height: '1080px',
+  height: '1005px',
   width: '1440px',
+  marginTop: '75px',
 });
 
 export const loaderStyles = {

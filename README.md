@@ -17,7 +17,11 @@ The backend uses a PostgreSQL database.
 - Configure your database connection in `apps/api/.env` or the appropriate config file.
 - Example `.env` variables:
   ```
-  DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+  DB_HOST=localhost
+  DB_PORT=5432
+  DB_USERNAME=postgres
+  DB_PASSWORD=password
+  DB_DATABASE=client
   ```
 
 #### Seeding the Database
