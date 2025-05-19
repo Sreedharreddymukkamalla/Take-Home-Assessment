@@ -9,8 +9,8 @@ export const CLIENTS_TABLE_HEADER = [
   { label: 'Name',     align: 'left',   width: '282px', padding: '15px 0px 15px 40px' },
   { label: 'Birthday', align: 'center', width: '165px', padding: '15px 0px' },
   { label: 'Type',     align: 'center', width: '153px', padding: '15px 0px' },
-  { label: 'Account',  align: 'left',   width: '208px', padding: '15px 0px 15px 60px' },
-  { label: 'Balance',  align: 'left',   width: '162px', padding: '15px 0px 15px 30px' },
+  { label: 'Account',  align: 'left',   width: '208px', padding: '15px 0px 15px 30px' },
+  { label: 'Balance',  align: 'left',   width: '162px', padding: '15px 0px 15px 15px' },
   { label: 'Actions',  align: 'center', width: '306px', padding: '15px 40px 15px 0px' },
 ] as const;
 

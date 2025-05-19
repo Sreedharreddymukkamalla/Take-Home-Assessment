@@ -17,7 +17,6 @@ export const searchBoxContainer: SxProps<Theme> = {
   overflow: 'hidden',
   border: '1px solid #E0D6C0', 
   justifyContent: 'space-between',
-  marginTop: '75px',
   marginLeft: '80px',
   boxShadow: '0px 5px 15px 0px #00000033',
 };
