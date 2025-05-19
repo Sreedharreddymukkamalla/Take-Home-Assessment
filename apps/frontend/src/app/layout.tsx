@@ -30,7 +30,7 @@ export default function RootLayout({
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start", 
-          background: "#000",
+          background: "#000"
         }}
       >
         {children}
