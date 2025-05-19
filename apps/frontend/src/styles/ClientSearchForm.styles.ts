@@ -44,7 +44,7 @@ export const nameField: SxProps<Theme> = {
   width: '505px',
   fontFamily: 'Poppins',
   '& .MuiOutlinedInput-notchedOutline legend': {
-    width:'42px'
+    width:'40px'
   },
   '& .MuiInputLabel-root.MuiInputLabel-shrink': {
     fontFamily: 'Poppins',

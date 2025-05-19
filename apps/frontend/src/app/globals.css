@@ -2,6 +2,11 @@
 @import "@fontsource/poppins/400.css"; 
 @import "@fontsource/poppins/700.css"; 
 
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 html,
 body {
   scrollbar-width: none;

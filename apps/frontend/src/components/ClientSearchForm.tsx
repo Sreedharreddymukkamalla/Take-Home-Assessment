@@ -90,7 +90,7 @@ export default function ClientSearchForm({ onSearch }: SearchFormProps) {
               slotProps={{
                 inputLabel: { shrink: true,
                   sx: {
-                    transform: 'translate(15px, -6px) scale(1)'
+                    transform: 'translate(14px, -6px) scale(1)'
                   },}
               }}
             />
